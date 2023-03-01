@@ -1,2 +1,2 @@
 # learn
-Some code written while studying
+学习代码
