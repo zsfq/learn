@@ -1,8 +1,7 @@
 /*
- * @Author: fqiangzs@163.com
+ * @Author: 进阶滴小白
  * @Date: 2023-03-01 23:23:28
- * @LastEditTime: 2023-03-02 22:53:24
- * @FilePath: \pixijsDemo1d:\WorkSpace\学习\learn\typescript\01_类型声明\01_基本类型.ts
+ * @LastEditTime: 2023-03-02 23:03:04
  * @Description:
  */
 //声明一个变量a,同时指定类型为number
@@ -93,4 +92,4 @@ type myType1 = string; //将string类型用myType1代替，但是代替基本类
 let countrty: myType1;
 
 type myType = 1 | 2 | 3 | 4 | 5;
-let n : myType;         //这样就不用写那么长的 1 | 2 | 3 | 4 |5 了
+let n: myType; //这样就不用写那么长的 1 | 2 | 3 | 4 |5 了
