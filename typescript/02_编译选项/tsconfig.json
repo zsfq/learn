@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES6",                    //ts编译的目标版本，默认ES3
+        "lib": ["ES6","DOM"],               //指定代码运行时所包含的库（宿主环境）
+        "module": "ES6",                    //指定要使用的模块化规范
+        "outDir": "./dist",                 //指定编译后文件所在的目录
+        "outFile": "./dist/app.js",         //将代码合并为一个文件
+        "allowJs": false,                   //是否对js文件进行编译，默认是false
+        "checkJs": false,                   //是否检查js代码是否符合代码规范，默认false
+        "removeComments": false,            //是否移除注释，默认false
+        "noEmit": true,                     //不生成编译后文件，默认false
+        "noEmitOnError": true,              //当有错误时不生成编译文件。默认法false
+        "alwaysStrict": false,              //用来设置编译后的文件是否使用严格模式，默认false
+        "noImplicitAny": true,              //是否允许隐式any,默认false
+        "noImplicitThis": false,            //是否允许不明类型的this,默认false
+        "strictNullChecks": false,          //是否严格检查空值
+        "strict": false,                    //所有严格检查的总开关，默认false
+    },
+}

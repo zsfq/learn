@@ -1,7 +1,7 @@
 /*
  * @Author: 进阶滴小白
  * @Date: 2023-03-01 23:23:28
- * @LastEditTime: 2023-03-02 23:03:04
+ * @LastEditTime: 2023-03-02 23:37:56
  * @Description:
  */
 //声明一个变量a,同时指定类型为number
