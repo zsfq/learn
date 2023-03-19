@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>箭头函数</title>
+</head>
+<body>
+    <script>
+        //声明一个函数
+        let fn = function(){
+            console.log('这是一个函数');
+        }
+
+        //箭头函数的写法
+        let fn2 = (a,b) => {           //括号中为参数
+            console.log('这是箭头函数',a,b);
+        }
+        fn2(10,20);   //这是箭头函数 10 20
+
+        //1.this 是静态的。 this 始终指向函数声明时所在的作用域下的this值
+        function getName(){
+            console.log(this.name);
+        }
+        let getName2 = () => {
+            console.log(this.name);
+        }
+
+        //设置window对象的name属性
+        window.name = '尚硅谷';
+        const school = {
+            name:'ATGUIGU'
+        }
+
+        //直接调用
+        getName();       //尚硅谷
+        getName2();      //尚硅谷
+
+        //call 方法调用
+        getName.call(school);   //ATGUIGU
+        getName2.call(school);  //尚硅谷
+
+        //2.不能作为构造实例化对象
+        /*
+            let Person = (name,age) => {
+                this.name = name;
+                this.age = age;
+            }
+            let me = new Person('xiao',30);
+        */
+        //console.log(me);        //Uncaught TypeError: Person is not a constructor
+
+        //3.不能使用arguments变量
+        /*
+            let fn3 = () => {
+                console.log(arguments);
+            }
+            fn3(1,2,3);    //Uncaught ReferenceError: arguments is not defined
+        */
+        function fn4(){
+            console.log(arguments);
+        }
+        fn4(2,3,4);       //Arguments(3) [2, 3, 4, callee: ƒ, Symbol(Symbol.iterator): ƒ]
+    </script>
+</body>
+</html>

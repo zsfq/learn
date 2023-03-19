@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>let声明变量</title>
+</head>
+<body>
+    <script>
+        //声明变量
+        let a;
+        let b,c,d;
+        let f = 123, g = 'hello', h = [];      //批量赋值
+
+        /*
+            特性：
+                1.变量不能重复声明
+                2.块级作用域
+                3.不存在变量提升
+                4.不影响作用域链
+        */
+        let star = '刘亦菲';
+        // let star = '杨幂';     Uncaught SyntaxError: Identifier 'star' has already been declared
+
+        // 2.块级作用域------只在代码块中生效
+        {
+            let girl = "张曼玉";
+        }
+        // console.log(girl);     let.html:27 Uncaught ReferenceError: girl is not defined
+
+        //3.不存在变量提升
+        console.log(song);       //undefined       不报错
+        var song = "青花瓷";
+
+        // console.log(song2);      //Cannot access 'song2' before initialization
+        let song2 = "青花瓷";
+
+        //4.不影响作用域链
+        {
+            let school = '清华';
+            function fn() {
+                console.log(school);
+            }
+            fn();        //清华
+        }
+    </script>
+</body>
+</html>

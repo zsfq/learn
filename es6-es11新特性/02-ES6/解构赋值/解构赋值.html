@@ -1,0 +1,41 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-19 22:09:16
+ * @LastEditTime: 2023-03-19 22:12:35
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>解构赋值</title>
+</head>
+<body>
+    <script>
+        //ES6允许根据一定模式从数组或者对象中提取值，对变量进行赋值，这就是解构赋值
+
+        //1.数组的解构赋值
+        const F4 = ['小沈阳','刘能','赵四','宋小宝'];
+        let [xiao,liu,zhao,song] = F4;
+        console.log(xiao);    //小沈阳
+        console.log(liu);     //刘能
+        console.log(zhao);    //赵四
+        console.log(song);    //宋小宝
+
+        //2.对象的解构赋值
+        const zhaobenshan = {
+            name:'赵本山',
+            age:'不详',
+            xiaopin:function(){
+                console.log('我可以演小品');
+            }
+        }
+        let {name,age,xiaopin} = zhaobenshan;
+        console.log(name);    //赵本山
+        console.log(age);     //不详
+        console.log(xiaopin);   //f(){console.log('我可以演小品');}
+    </script>
+</body>
+</html>
