@@ -1,0 +1,40 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-21 20:42:04
+ * @LastEditTime: 2023-03-21 20:42:08
+ * @Description:
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rest获取函数实参</title>
+</head>
+<body>
+    <script>
+        //ES6引入rest参数，用于获取函数的实参，用来代替arguments
+        
+        //ES5获取实参的方式
+        function date(){
+            console.log(arguments);      //打印的是一个对象
+        }
+        date('白芷','阿娇','思慧');
+
+        //ES6 rest参数
+        function data(...args){
+            console.log(args);              //打印的是一个数组，可以使用数组的一些api
+        }
+        data('白芷','阿娇','思慧');
+
+        //注意：rest参数必须要放到参数的最后
+        function fn(a,b,...args){
+            console.log(a);
+            console.log(b);
+            console.log(args);
+        }
+        fn(1,2,3,4,5);        //1 2  [3,4,5]
+    </script>
+</body>
+</html>

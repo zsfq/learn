@@ -1,0 +1,46 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-21 20:52:12
+ * @LastEditTime: 2023-03-21 20:56:35
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>扩展运算符</title>
+</head>
+<body>
+    <div></div>
+    <div></div>
+    <div></div>
+    <script>
+        //扩展运算符 ...  能够将数组转换为逗号分割的参数序列
+        const array = ["刘亦菲","杨幂","迪丽热巴"];
+        function star(){
+            console.log(arguments);
+        }
+        star(...array);           //会将数组解为3个参数传入，等价于star("刘亦菲","杨幂","迪丽热巴")
+
+        //扩展运算符应用
+        //1.数组的合并
+        const kuaizi = ["王太利","肖央"];
+        const fenghuang = ["曾毅","玲花"];
+        const array2 = [...kuaizi,...fenghuang];
+        console.log(array2);       //['王太利', '肖央', '曾毅', '玲花']
+
+        //2.数组克隆
+        const sanzhihua = ['E','G','M'];
+        const sanyecao = [...sanzhihua];       //浅拷贝
+        console.log(sanyecao);       // ['E', 'G', 'M']
+
+        //3.将伪数组转为真正的数组
+        const divs = document.querySelectorAll('div');
+        console.log(divs);    //这样的divs是一个对象
+        const divArr = [...divs];
+        console.log(divArr);  // [div, div, div]
+    </script>
+</body>
+</html>

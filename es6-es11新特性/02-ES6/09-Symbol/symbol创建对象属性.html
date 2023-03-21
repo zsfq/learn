@@ -1,0 +1,54 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-21 21:18:15
+ * @LastEditTime: 2023-03-21 21:27:21
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>symbol创建对象属性</title>
+  </head>
+  <body>
+    <script>
+      //给未知对象添加 up down方法
+      let game = {
+        //假设目前该对象中的属性不知道，可能存在重名属性的风险
+        up: function () {
+          console.log("up");
+        },
+        down: function () {
+          console.log("down");
+        },
+      };
+
+      //使用symbol安全高效地添加属性
+      let methods = {
+        up: Symbol(),
+        down: Symbol(),
+      };
+      game[methods.up] = function () {
+        console.log("我可以上升！！！");
+      };
+      game[methods.down] = function () {
+        console.log("我可以下降！");
+      };
+      console.log(game);
+
+      //另外一种添加symbol属性地方法
+      let youxi = {
+        name: "狼人杀",
+        [Symbol("say")]: function () {
+          console.log("你可以说话了！");
+        },
+        [Symbol("zibao")]: function () {
+            console.log("我可以自爆！");
+          },
+      };
+      console.log(youxi);
+    </script>
+  </body>
+</html>

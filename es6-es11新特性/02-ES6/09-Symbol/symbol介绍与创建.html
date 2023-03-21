@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>symbol介绍与创建</title>
+</head>
+<body>
+    <script>
+        //ES6引入了一种新的原始数据类型Symbol,表示独一无二的值。它是JavaScript的第7种数据类型。
+        //另外6种，null,undefined,boolean,string,number,object
+
+        /*
+            symbol特点：
+                1.symbol值唯一，可以用来解决命名冲突问题
+                2.symbol值不能与其他数据进行运算
+                3.symbol定义的对象属性不能使用for...in进行循环遍历，但是可以使用Reflect.ownKeys来获取对象的所有键名
+        */
+        
+        //创建Symbol
+        let s = Symbol();
+        console.log(s,typeof s);   //Symbol() 'symbol'     此处并不能体现唯一性
+
+        let s2 = Symbol('尚硅谷');
+        let s3 = Symbol('尚硅谷');
+        console.log(s2 === s3);   //false
+
+        let s4 = Symbol.for('尚硅谷');
+        console.log(s4, typeof s4);    //Symbol(尚硅谷) 'symbol'
+
+        //symbol值不能与其他数据进行运算
+        //let result = s + 100;         //Uncaught TypeError: Cannot convert a Symbol value to a number
+    </script>
+</body>
+</html>
