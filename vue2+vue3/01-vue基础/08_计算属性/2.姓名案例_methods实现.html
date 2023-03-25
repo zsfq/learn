@@ -1,0 +1,37 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-25 18:39:45
+ * @LastEditTime: 2023-03-25 18:54:17
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>姓名案例-methods实现</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <div id="root">
+        姓： <input type="text" v-model="firstName"><br><br>
+        名： <input type="text" v-model="lastName"><br><br>
+        全名：<span>{{fullName()}}</span>            <!--这里的fullName必须加上括号，不然现实的就是函数本身，而不是返回值-->
+    </div>
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            data:{
+                firstName:"张",
+                lastName:"三"
+            },
+            methods:{
+                fullName(){
+                    return this.firstName + ' - ' + this.lastName;
+                }
+            }
+        })
+    </script>
+</body>
+</html>
