@@ -1,0 +1,35 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-27 23:12:36
+ * @LastEditTime: 2023-03-27 23:31:49
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        
+    -->
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+    </div>
+    
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            data:{
+                name:"清华",
+                address:"北京"
+            }
+        })
+    </script>
+</body>
+</html>
