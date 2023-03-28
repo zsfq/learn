@@ -1,0 +1,53 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-27 23:12:36
+ * @LastEditTime: 2023-03-28 23:12:00
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>列表过滤</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        Vue.set()有一个缺陷就是只能给data中的对象添加属性，不能对vue实例中的data添加属性
+    -->
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+        <br>
+        <br>
+        <button @click="addProperty">添加一个性别属性，默认值是男</button>
+        <h2>姓名：{{student.name}}</h2>
+        <h2>年龄：{{student.age}}</h2>
+        <h2>性别：{{student.sex}}</h2>
+    </div>
+    
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            data:{
+                name:"清华",
+                address:"北京",
+                student:{
+                    name:"张三",
+                    age:18
+                }
+            },
+            methods:{
+                addProperty(){
+                    //Vue.set(this.student,'sex','男');       //完成添加响应式属性
+
+                    //第二种写法
+                    this.$set(this.student,'sex','女');
+                }
+            }
+        })
+    </script>
+</body>
+</html>

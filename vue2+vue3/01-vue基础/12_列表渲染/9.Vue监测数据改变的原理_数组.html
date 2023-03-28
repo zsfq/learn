@@ -1,0 +1,70 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-03-27 23:12:36
+ * @LastEditTime: 2023-03-28 23:24:00
+ * @Description: 
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue监测数据改变的原理</title>
+    <script src="../js/vue.js"></script>
+</head>
+<body>
+    <!--
+        
+    -->
+    <div id="root">
+        <h2>学校名称：{{name}}</h2>
+        <h2>学校地址：{{address}}</h2>
+        <br>
+        <br>
+        <button @click="addProperty">添加一个性别属性，默认值是男</button>
+        <h2>姓名：{{student.name}}</h2>
+        <h2>年龄：{{student.age}}</h2>
+        <h2>性别：{{student.sex}}</h2>
+        <button @click="addHobby">点击添加爱好</button>
+        <ul>
+            <li v-for="(item, index) in student.hobby" :key="index">
+                {{item}}
+            </li>
+        </ul>
+    </div>
+    
+    <script>
+        const vm = new Vue({
+            el:"#root",
+            data:{
+                name:"清华",
+                address:"北京",
+                student:{
+                    name:"张三",
+                    age:18,
+                    hobby:[
+                        "抽烟",
+                        "喝酒"
+                    ]
+                }
+            },
+            methods:{
+                addProperty(){
+                    //Vue.set(this.student,'sex','男');       //完成添加响应式属性
+
+                    //第二种写法
+                    this.$set(this.student,'sex','女');
+                },
+                addHobby(){
+                    //只有使用push、pop、shift、unshift、reverse、sort、splice这7个操作是，才会是响应式
+                    this.student.hobby.push("烫头");        //这里的push实际上是vue封装的push方法，并不是Array中的push
+                    
+                    //也可以用vue.set
+                    Vue.set(this.student.hobby,1,"打台球");
+                }
+            }
+        })
+    </script>
+</body>
+</html>
