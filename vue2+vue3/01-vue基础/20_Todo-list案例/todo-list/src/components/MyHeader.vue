@@ -1,23 +1,42 @@
 <!--
  * @Author: 进阶滴小白
  * @Date: 2023-04-06 23:12:30
- * @LastEditTime: 2023-04-06 23:31:04
+ * @LastEditTime: 2023-04-11 23:29:49
  * @Description: 
 -->
 <template>
     <div class="todo-header">
-        <input type="text" placeholder="请输入你的任务名称，按回车键确认">
+        <input type="text" placeholder="请输入你的任务名称，按回车键确认" v-model="title" @keyup.enter="add">
     </div>
 </template>
 <script>
+import {nanoid} from 'nanoid'
 export default{
-    name:"MyHeader"
+    name:"MyHeader",
+    data() {
+        return {
+            title:""
+        }
+    },
+    props:['addTodo'],
+    methods:{
+        add(event){
+            //将用户的输入包装成一个对象
+            if(!this.title.trim()) {
+                return alert("输入不能为空");
+            }
+            const todoObj = {id:nanoid(), title:event.target.value, done:false}
+            //通知App组件去添加一个todo
+            this.addTodo(todoObj);
+            this.title = '';
+        }
+    }
 }
 </script>
 
 <style scoped>
 /*header */
-.todo-header{
+.todo-header input{
     width: 560px;
     height: 28px;
     font-size: 14px;
