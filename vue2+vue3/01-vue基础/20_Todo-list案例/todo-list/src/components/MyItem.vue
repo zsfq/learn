@@ -1,22 +1,36 @@
 <!--
  * @Author: 进阶滴小白
  * @Date: 2023-04-06 23:13:34
- * @LastEditTime: 2023-04-11 22:51:18
+ * @LastEditTime: 2023-04-12 23:02:02
  * @Description: 
 -->
 <template>
     <li>
       <label>
-        <input type="checkbox" :checked="todo.done"/>
+        <input type="checkbox" :checked="todo.done" @change="handleCheck(todo.id)"/>
+        <!-- 如下代码也能实现勾选和取消勾选的功能，但是不推荐使用，有点违反原则，修改了props -->
+        <!-- <input type="checkbox" v-model="todo.done"> -->
         <span>{{ todo.title }}</span>
       </label>
-      <button class="btn btn-danger"> 删除 </button>
+      <button class="btn btn-danger" @click="handleDelete(todo.id)"> 删除 </button>
     </li>
 </template>
 <script>
 export default {
   name: "MyItem",
-  props:['todo']
+  props:['todo',"checkTodo","deleteTodo"],
+  methods:{
+    handleCheck(id){
+      //通知APP组件将对应的todo对象修改
+      this.checkTodo(id);
+    },
+    //删除
+    handleDelete(id){
+      if(confirm('确定删除吗？')){
+        this.deleteTodo(id);
+      }  
+    }
+  }
 };
 </script>
 <style scoped>

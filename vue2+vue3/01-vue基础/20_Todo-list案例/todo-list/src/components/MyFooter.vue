@@ -1,17 +1,57 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-04-06 23:13:34
+ * @LastEditTime: 2023-04-12 23:38:59
+ * @Description: 
+-->
 <template>
-  <div class="todo-footer">
+  <div class="todo-footer" v-show="total">
     <label>
-      <input type="checkbox"/>
+      <!-- 第一种实现全选 -->
+      <!-- <input type="checkbox" :checked="isAll" @change="checkAll"/> -->
+      <input type="checkbox" v-model="isAll"/>
     </label>
     <span>
-      <span>已完成1</span> / 全部5
+      <span>已完成 {{ doneTotal }}</span> / 全部{{ total }}
     </span>
-    <button class="btn btn-danger">清除已完成任务</button>
+    <button class="btn btn-danger" @click="clearAll">清除已完成任务</button>
   </div>
 </template>
 <script>
 export default {
   name: "MyFooter",
+  props:["todos","checkAllTodo","clearAllTodo"],
+  computed:{
+    total(){
+      return this.todos.length;
+    },
+    doneTotal(){
+      //第一种写法
+      // this.todos.reduce((pre,current) => {
+      //   return pre + (current.done ? 1 : 0);
+      // },0) 
+
+      //简便写法
+      return this.todos.reduce((pre,current) => pre + (current.done ? 1 : 0),0);
+    },
+    isAll:{
+      get(){
+        return this.doneTotal === this.total && this.total > 0;
+      },
+      set(value){
+        this.checkAllTodo(value);
+      }
+      
+    }
+  },
+  methods:{
+    // checkAll(event){
+    //   this.checkAllTodo(event.target.checked);
+    // }
+    clearAll(){
+      this.clearAllTodo()
+    }
+  }
 };
 </script>
 <style scoped>

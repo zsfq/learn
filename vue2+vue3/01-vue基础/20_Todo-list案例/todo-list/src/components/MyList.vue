@@ -1,6 +1,18 @@
+<!--
+ * @Author: 进阶滴小白
+ * @Date: 2023-04-06 23:13:34
+ * @LastEditTime: 2023-04-12 23:01:20
+ * @Description: 
+-->
 <template>
     <ul class="todo-main">
-        <MyItem v-for="todoObj in todos" :key="todoObj.id" :todo="todoObj"></MyItem>
+      <MyItem 
+        v-for="todoObj in todos" 
+        :key="todoObj.id" 
+        :todo="todoObj" 
+        :checkTodo="checkTodo"
+        :deleteTodo="deleteTodo"
+      />
     </ul>
 </template>
 <script>
@@ -10,7 +22,7 @@ export default{
     components:{
         MyItem
     },
-    props:['todos']
+    props:['todos',"checkTodo","deleteTodo"]
 }
 </script>
 <style scoped>

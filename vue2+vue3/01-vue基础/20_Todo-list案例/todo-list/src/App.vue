@@ -1,7 +1,7 @@
 <!--
  * @Author: 进阶滴小白
  * @Date: 2023-04-06 23:11:50
- * @LastEditTime: 2023-04-11 23:21:26
+ * @LastEditTime: 2023-04-12 23:38:02
  * @Description: 
 -->
 <template>
@@ -9,8 +9,8 @@
     <div class="todo-container">
       <div class="todo-wrap">
         <MyHeader :addTodo="addTodo"></MyHeader>
-        <MyList :todos="todos"></MyList>
-        <MyFooter></MyFooter>
+        <MyList :todos="todos" :checkTodo="checkTodo" :deleteTodo="deleteTodo"></MyList>
+        <MyFooter :todos="todos" :checkAllTodo="checkAllTodo" :clearAllTodo="clearAllTodo"></MyFooter>
       </div>
     </div>
   </div>
@@ -38,8 +38,33 @@ export default {
         }
   },
   methods:{
+    //添加todo
     addTodo(todoObj){
       this.todos.unshift(todoObj);
+    },
+    //取消or取消勾选todo
+    checkTodo(id){
+      this.todos.forEach(todo => {
+        if(todo.id === id)
+          todo.done = !todo.done;
+      })
+    },
+    //删除todo
+    deleteTodo(id){
+      this.todos = this.todos.filter((todo) => {
+        return todo.id !== id;
+      })
+    },
+    //全选或者取消全选
+    checkAllTodo(done){
+      this.todos.forEach((todo) => {
+        todo.done = done;
+      })
+    },
+    clearAllTodo(){
+      this.todos = this.todos.filter((todo) => {
+        return !todo.done;
+      })
     }
   }
 }
