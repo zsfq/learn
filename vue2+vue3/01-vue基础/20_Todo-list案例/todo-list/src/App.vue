@@ -1,7 +1,7 @@
 <!--
  * @Author: 进阶滴小白
  * @Date: 2023-04-06 23:11:50
- * @LastEditTime: 2023-04-12 23:38:02
+ * @LastEditTime: 2023-04-15 22:36:33
  * @Description: 
 -->
 <template>
@@ -30,11 +30,7 @@ export default {
   },
   data(){
         return {
-            todos:[
-                {id:'0001',title:'吃饭',done:true},
-                {id:'0002',title:'学习',done:false},
-                {id:'0003',title:'睡觉',done:true}
-            ]
+            todos:JSON.parse(localStorage.getItem("todos")) || []
         }
   },
   methods:{
@@ -65,6 +61,14 @@ export default {
       this.todos = this.todos.filter((todo) => {
         return !todo.done;
       })
+    }
+  },
+  watch:{
+    todos:{
+      deep:true,
+      handler(value){
+        localStorage.setItem('todos',JSON.stringify(value));
+      }
     }
   }
 }
